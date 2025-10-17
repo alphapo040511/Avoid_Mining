@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class AutoMinerBase : MonoBehaviour
 {
-    [Header("생성기 데이터")]
-    public AutoMinerDataSO minerData;
-
     [Header("miner references")]
     public Image pick;
     public Image mineral;
@@ -18,61 +15,27 @@ public class AutoMinerBase : MonoBehaviour
     public Vector3 targetAngle = new Vector3(0, 0, -60f);
     public float rotateSpeed = 6f;
 
-    private float interval;
-    private int amount;
+    private float interval = 1;
 
-    public float timer = 0f;
-
-    private bool initialized = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        interval = Random.Range(1f, 1.5f);
+
         pickPivot.transform.localEulerAngles = originAngle;
 
-        MinerSetting();
+        StartCoroutine(AnimationCoroutine());
     }
 
-    public void InitializeMiner(AutoMinerDataSO newData)
-    {
-        minerData = newData;        // 새로운 데이터 적용
-        MinerSetting();
-    }
 
-    private void MinerSetting()
+    IEnumerator AnimationCoroutine()
     {
-        initialized = false;
-
-        if (minerData != null)
+        while(true)
         {
-            pick.sprite = minerData.pickImage;
-            mineral.sprite = minerData.mineralImage;
-
-            interval = minerData.GenerationInterval;
-            amount = minerData.generationAmount;
+            StartCoroutine(MiningAnimation());
+            yield return new WaitForSeconds(interval);
         }
-
-        initialized = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (initialized == false) return;
-
-        timer += Time.deltaTime;
-        if(timer >= interval)
-        {
-            timer -= interval;
-            GenerateResource();
-        }
-    }
-
-    void GenerateResource()
-    {
-        ResourceManager.Instance.AddResource(15);
-        StartCoroutine(MiningAnimation());
-        Debug.Log("자원 생산");
     }
 
     IEnumerator MiningAnimation()

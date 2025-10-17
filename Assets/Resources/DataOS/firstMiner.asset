@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: firstMiner
   m_EditorClassIdentifier: 
   minerId: Miner_001
-  GenerationInterval: 3
-  generationAmount: 5
   pickImage: {fileID: 21300000, guid: df8b5bef69afed240a04561f8aaa2f8c, type: 3}
   mineralImage: {fileID: 21300000, guid: 5c31449bf67abaf409b5b3cbdf8eef42, type: 3}
+  maxCount: 20
+  minAmount: 5
+  maxAmount: 10000
+  firstPrice: 50
+  endPrice: 50000

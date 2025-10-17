@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21874ce13caa99e4397d94e150869784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 5
-  lifeTime: 0.75
+  acceleration: 3
+  lifeTime: 0.5
   tmp: {fileID: 1287698846170900650}
   rectTransform: {fileID: 1674245426985501501}
