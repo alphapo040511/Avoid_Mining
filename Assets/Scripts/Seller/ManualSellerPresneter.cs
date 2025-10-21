@@ -16,7 +16,7 @@ public class ManualSellerPresneter : SellerPresenterBase
     protected override void OnPurchase()
     {
         int count = miner.currentLevel;
-        int price = miner.data.PriceByPower(count - 1, 3);
+        int price = miner.data.PriceByPower(count - 1);
 
         if (ResourceManager.Instance.UseResource(price))
         {
@@ -34,7 +34,7 @@ public class ManualSellerPresneter : SellerPresenterBase
     private void UpdataPrice()
     {
         int count = miner.currentLevel;
-        int price = miner.data.PriceByPower(count - 1, 3);
+        int price = miner.data.PriceByPower(count - 1);
         view.UpdatePrice(CurrencyFormatter.Format(price));
     }
 }

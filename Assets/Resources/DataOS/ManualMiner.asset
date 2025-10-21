@@ -21,3 +21,5 @@ MonoBehaviour:
   maxAmount: 100000000
   firstPrice: 50
   endPrice: 1000000
+  beta: 3
+  priceValue: 1
