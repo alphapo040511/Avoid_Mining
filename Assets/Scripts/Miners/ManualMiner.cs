@@ -7,6 +7,11 @@ public class ManualMiner : MonoBehaviour
 {
     public Button clickPoint;
 
+    public AutoMinerDataSO data;
+    public int currentLevel { get; private set; } = 1;
+
+    private int currentValue;
+
     private RectTransform rt;
 
     private void Awake()
@@ -18,6 +23,7 @@ public class ManualMiner : MonoBehaviour
     void Start()
     {
         ListenerSetting();
+        currentValue = data.GetAmount(currentLevel);
     }
 
     void ListenerSetting()
@@ -27,7 +33,7 @@ public class ManualMiner : MonoBehaviour
 
     void OnClick()
     {
-        ResourceManager.Instance.AddResource(1000);
+        ResourceManager.Instance.AddResource(currentValue);
 
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, rt.position);
 
@@ -35,6 +41,12 @@ public class ManualMiner : MonoBehaviour
         float randomY = Random.Range(-30f, 30f);
         screenPos += new Vector3(randomX, randomY, 0);
 
-        ToastMessageManager.Instance.ShowMessage(1000, screenPos);
+        ToastMessageManager.Instance.ShowMessage(currentValue, screenPos);
+    }
+
+    public void LevelUp()
+    {
+        currentLevel = currentLevel + 1;
+        currentValue = data.GetAmount(currentLevel);
     }
 }

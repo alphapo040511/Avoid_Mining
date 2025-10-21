@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MinerController : MonoBehaviour
 {
-    [Header("»ı¼º±â µ¥ÀÌÅÍ")]
+    [Header("ìƒì„±ê¸° ë°ì´í„°")]
     public AutoMinerDataSO minerData;
 
     public AutoMinerBase minerPrefabs;
 
-    private Stack<AutoMinerBase> miners = new Stack<AutoMinerBase>();
+    public Stack<AutoMinerBase> miners = new Stack<AutoMinerBase>();
 
 
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class MinerController : MonoBehaviour
 
         if(index % 2 == 0)
         {
-            // Â¦¼ö
+            // ì§ìˆ˜
             pos += Vector3.down * 50;
         }
         else

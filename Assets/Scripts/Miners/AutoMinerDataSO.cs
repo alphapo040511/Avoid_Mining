@@ -7,30 +7,31 @@ using UnityEngine;
 public class AutoMinerDataSO : ScriptableObject
 {
     public string minerId;                      // id
+    public string minerName;                    // ì±„êµ´ê¸° ì´ë¦„
 
-    public Sprite pickImage;                    // °î±ªÀÌ ÀÌ¹ÌÁö
-    public Sprite mineralImage;                 // ±¤¹° ÀÌ¹ÌÁö
+    public Sprite pickImage;                    // ê³¡ê´­ì´ ì´ë¯¸ì§€
+    public Sprite mineralImage;                 // ê´‘ë¬¼ ì´ë¯¸ì§€
 
-    public int maxCount = 20;                   // ÃÖ´ë °³¼ö
+    public int maxCount = 20;                   // ìµœëŒ€ ê°œìˆ˜
 
-    public int minAmount = 5;                   // ÃÖ¼Ò »ı¼º·®
-    public int maxAmount = 1000000;             // ÃÖ´ë »ı¼º·®
+    public int minAmount = 5;                   // ìµœì†Œ ìƒì„±ëŸ‰
+    public int maxAmount = 1000000;             // ìµœëŒ€ ìƒì„±ëŸ‰
 
-    public int firstPrice = 50;                 // Ã¹ ±¸¸Å °¡°İ
-    public int endPrice = 50000;                // ¸¶Áö¸· ±¸¸Å °¡°İ
+    public int firstPrice = 50;                 // ì²« êµ¬ë§¤ ê°€ê²©
+    public int endPrice = 50000;                // ë§ˆì§€ë§‰ êµ¬ë§¤ ê°€ê²©
 
 
-    public int GetAmount(int count)       // ÀÚ¿ø »ı¼º·®
+    public int GetAmount(int count)       // ìì› ìƒì„±ëŸ‰
     {
         if (count <= 0) return 0;
 
-        // Áö¼ö Áõ°¡À² r °è»ê
+        // ì§€ìˆ˜ ì¦ê°€ìœ¨ r ê³„ì‚°
         double r = Math.Pow((double)maxAmount / minAmount, 1.0 / (maxCount - 1));
 
-        // ÇöÀç »ı»ê·® °è»ê
+        // í˜„ì¬ ìƒì‚°ëŸ‰ ê³„ì‚°
         double amount = minAmount * Math.Pow(r, count - 1);
 
-        // ÃÖ´ë°ª cap
+        // ìµœëŒ€ê°’ cap
         if (amount > maxAmount) amount = maxAmount;
 
         return (int)amount;
@@ -46,13 +47,13 @@ public class AutoMinerDataSO : ScriptableObject
         return (int)price;
     }
 
-    [ContextMenu("»ı»ê·® È®ÀÎ")]
+    [ContextMenu("ìƒì‚°ëŸ‰ í™•ì¸")]
     public void DebugMPS()
     {
         string debug = "";
         for(int i = 1; i <= maxCount; i++)
         {
-            debug += $"Ã¤±¼±â {i} ´ë | ";
+            debug += $"ì±„êµ´ê¸° {i} ëŒ€ | ";
             debug += GetAmount(i);
             debug += "\n";
         }
@@ -60,13 +61,13 @@ public class AutoMinerDataSO : ScriptableObject
         Debug.Log(debug);
     }
 
-    [ContextMenu("±¸¸Å°¡ È®ÀÎ")]
+    [ContextMenu("êµ¬ë§¤ê°€ í™•ì¸")]
     public void DebugPrice()
     {
         string debug = "";
         for (int i = 0; i < maxCount; i++)
         {
-            debug += $"Ã¤±¼±â {i} ´ë º¸À¯Áß | ";
+            debug += $"ì±„êµ´ê¸° {i} ëŒ€ ë³´ìœ ì¤‘ | ";
             debug += PriceByPower(i);
             debug += "\n";
         }
