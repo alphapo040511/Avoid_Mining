@@ -28,6 +28,12 @@ public class AutoMinerBase : MonoBehaviour
         StartCoroutine(AnimationCoroutine());
     }
 
+    public void ChangeImage(AutoMinerDataSO data)
+    {
+        pick.sprite = data.pickImage;
+        mineral.sprite = data.mineralImage;
+    }
+
 
     IEnumerator AnimationCoroutine()
     {

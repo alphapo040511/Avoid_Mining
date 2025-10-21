@@ -12,12 +12,7 @@ public class ManualMiner : MonoBehaviour
 
     private int currentValue;
 
-    private RectTransform rt;
-
-    private void Awake()
-    {
-        rt = GetComponent<RectTransform>();
-    }
+    public RectTransform targetRect;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +30,7 @@ public class ManualMiner : MonoBehaviour
     {
         ResourceManager.Instance.AddResource(currentValue);
 
-        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, rt.position);
+        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, targetRect.position);
 
         float randomX = Random.Range(-30f, 30f);
         float randomY = Random.Range(-30f, 30f);

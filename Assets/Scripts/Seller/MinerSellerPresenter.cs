@@ -9,7 +9,7 @@ public class MinerSellerPresenter : SellerPresenterBase
     protected override void Initialize()
     {
         base.Initialize();
-        view.Init(minerController.minerData.pickImage, minerController.minerData.minerId);
+        view.Init(minerController.minerData.pickImage, minerController.minerData.minerName);
         UpdataPrice();
     }
 

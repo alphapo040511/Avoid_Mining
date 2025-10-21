@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0f6637446b5904c927fe6b795feb99, type: 3}
-  m_Name: ManualMiner
+  m_Name: Miner_1
   m_EditorClassIdentifier: 
-  minerId: Manual Miner
-  minerName: Click Level
-  pickImage: {fileID: 21300000, guid: 7ab44b2f4aa734f428aa08bdbd65ef77, type: 3}
-  mineralImage: {fileID: 0}
-  maxCount: 40
-  minAmount: 1
-  maxAmount: 700000000
-  firstPrice: 30
-  endPrice: 10000000
-  priceValue: 3
-  generateValue: 2
+  minerId: Miner_001
+  minerName: Level 1 Miner
+  pickImage: {fileID: 21300000, guid: df8b5bef69afed240a04561f8aaa2f8c, type: 3}
+  mineralImage: {fileID: 21300000, guid: 5c31449bf67abaf409b5b3cbdf8eef42, type: 3}
+  maxCount: 15
+  minAmount: 5
+  maxAmount: 700000
+  firstPrice: 50
+  endPrice: 50000
+  priceValue: 2
+  generateValue: 1.5

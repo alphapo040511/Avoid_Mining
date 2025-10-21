@@ -20,8 +20,8 @@ public class AutoMinerDataSO : ScriptableObject
     public int firstPrice = 50;                 // 첫 구매 가격
     public int endPrice = 50000;                // 마지막 구매 가격
 
-    public float beta = 2;                      // 가격 증가율 계수
-    public float priceValue = 1f;               // 생산률 증가 계수
+    public float priceValue = 2;                // 가격 증가율 계수
+    public float generateValue = 1f;            // 생산률 증가 계수
 
 
     public int GetAmount(int count)       // 자원 생성량
@@ -29,7 +29,7 @@ public class AutoMinerDataSO : ScriptableObject
         if (count <= 0) return 0;
 
         // 지수 증가율 r 계산
-        double r = Math.Pow((double)maxAmount / minAmount, priceValue / (maxCount - 1));
+        double r = Math.Pow((double)maxAmount / minAmount, generateValue / (maxCount - 1));
 
         // 현재 생산량 계산
         double amount = minAmount * Math.Pow(r, count - 1);
@@ -46,7 +46,7 @@ public class AutoMinerDataSO : ScriptableObject
         if (count >= maxCount - 1) return endPrice;
 
         double t = (double)(count) / (maxCount - 1);
-        double price = firstPrice + (endPrice - firstPrice) * Math.Pow(t, beta);
+        double price = firstPrice + (endPrice - firstPrice) * Math.Pow(t, priceValue);
         return (int)price;
     }
 
